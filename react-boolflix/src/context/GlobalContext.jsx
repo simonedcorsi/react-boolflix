@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, Children } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 const GlobalContext = createContext()
@@ -11,7 +11,8 @@ const GlobalProvider = ({ children }) => {
 
     //data
     const [query, setQuery] = useState('')
-    const [movie, setMovie] = useState([])
+    const [movies, setMovies] = useState([])
+    const [tvs, setTvs] = useState([])
 
 
     const HandleSubmit = (e) => {
@@ -20,14 +21,29 @@ const GlobalProvider = ({ children }) => {
 
         // https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=ritorno+al+futuro 
         axios.get(`${endpoint}movie?api_key=${apikey}&query=${query}`)
-        .then( res => setMovie(res.data.results) )
+            .then(res => setMovies(res.data.results))
+            .catch(err => console.log(err))
+        
+            axios.get(`${endpoint}tv?api_key=${apikey}&query=${query}`)
+            .then(res => setTvs(res.data.results))
+            .catch(err => console.log(err))
     }
+
+    useEffect(() => {
+        console.log("dati dei film:" + movies)
+        console.log("dati di serie tv:" + tvs)
+        console.log("apikey:" + apikey)
+        console.log("endpoint:" + endpoint)
+        console.log("chiamata api:" + `${endpoint}movie?api_key=${apikey}&query=${query}`)
+    },[movies, tvs] )
 
     
     const value = {
         query,
         setQuery,
-        HandleSubmit
+        HandleSubmit,
+        movies,
+        tvs
     }
 
     return (
