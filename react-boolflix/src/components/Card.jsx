@@ -42,9 +42,13 @@ export function Card({ data, type }) {
 
     return (
         <>
-            <li>
-                <img src={`https://image.tmdb.org/t/p/w342${data.poster_path}`} alt={title} />
-                <div>
+            <li className='card'>
+                <img
+                    src={`https://image.tmdb.org/t/p/w342${data.poster_path}`}
+                    alt={title}
+                    className='poster'
+                />
+                <div className='card-content'>
                     <h3>{title}</h3>
                     <p>
                         Original: {originalTitle}
@@ -53,7 +57,7 @@ export function Card({ data, type }) {
                         lingua: { renderLanguage( data.original_language ) }
                     </p>
                     <p>
-                        Voto: <span>{ renderVote( data.vote_average ) }</span>
+                        Voto: <span className='stars'>{ renderVote( data.vote_average ) }</span>
                     </p>
                 </div>
             </li>

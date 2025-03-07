@@ -1,3 +1,18 @@
 .language-flag{
+   width: calc(20% - 16px);
+   box-sizing: border-box;
+}
+
+.star {
+    color: #ccc;
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.language-flag {
     width: 24px;
+    height: 16px;
+    vertical-align: middle;
 }
