@@ -1,16 +1,18 @@
 import { useGlobalContext } from "../context/GlobalContext"
+import { ResultsList } from "./ResultsList"
 
 export function Main() {
 
     const { movies, tvs } = useGlobalContext()
 
-    const HandleStars = (vote) =>  Math.ceil( vote / 2 )
+    // const HandleStars = (vote) =>  Math.ceil( vote / 2 )
 
     return (
         <main>
             <h2>Films</h2>
+            <ResultsList type="movies" items={movies}/>
 
-            <ul>
+            {/* <ul>
                 {
                     movies.map( (elem) => {
                         return (
@@ -20,11 +22,12 @@ export function Main() {
                         )
                     })
                 }
-            </ul>
+            </ul> */}
 
             <h2>Serie tv</h2>
+            <ResultsList type="tvs" items={tvs}/>
 
-            <ul>
+            {/* <ul>
                 {
                     tvs.map( (elem) => {
                         return (
@@ -34,7 +37,7 @@ export function Main() {
                         )
                     })
                 }
-            </ul>
+            </ul> */}
 
         </main>
     )
