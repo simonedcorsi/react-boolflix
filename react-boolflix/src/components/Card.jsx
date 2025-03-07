@@ -25,20 +25,20 @@ export function Card({ data, type }) {
         }
     };
 
-    // const renderVote = (vote) => {
-    //     const rating = Math.ceil(vote / 2)
-    //     const stars = []
-    //     for (let i = 1; i <= 5; i++) {
-    //         stars.push(
-    //             i <= rating ? (
-    //                 <FaStar key={i} className='star filled' />
-    //             ) : (
-    //                 <FaRegStar key={i} className='star' />
-    //             )
-    //         )
-    //     }
-    //     return stars
-    // };
+    const renderVote = (vote) => {
+        const rating = Math.ceil(vote / 2)
+        const stars = []
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                i <= rating ? (
+                    <FaStar key={i} className='star filled' />
+                ) : (
+                    <FaRegStar key={i} className='star' />
+                )
+            )
+        }
+        return stars
+    };
 
     return (
         <>
